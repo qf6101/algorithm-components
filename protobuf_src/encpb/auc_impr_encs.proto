@@ -1,0 +1,22 @@
+/**
+ * Created by qfeng on 2019/02/25
+ */
+
+syntax = "proto3";
+
+option cc_enable_arenas = true;
+option java_outer_classname = "AUCImprEncsPb";
+option java_multiple_files = true;
+option java_package = "algocomp";
+
+import "encpb/encode_bunch.proto";
+
+package algocomp;
+
+message AUCImprEncs {
+    repeated float labels = 1;
+    repeated float weights = 2;
+    repeated float scores = 3;
+    repeated EncodeBunch encs = 4;
+    int64 feat_size = 5;
+}

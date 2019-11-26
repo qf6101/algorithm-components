@@ -1,0 +1,35 @@
+/**
+ * Created by qfeng on 2018/12/29
+ */
+
+syntax = "proto3";
+
+option cc_enable_arenas = true;
+option java_outer_classname = "AttributeValuePb";
+option java_multiple_files = true;
+option java_package = "algocomp";
+
+import "attrpb/setcate_value.proto";
+
+package algocomp;
+
+message AttributeData {
+
+    enum AttributeType {
+        UNKNOWN = 0;
+        CATEGORICAL = 1; // string, int_val
+        SET_CATEGORICAL = 2; // SetCateValue --> [<string, float>]
+        REAL_VALUED = 3; // float
+        UNIX_TIMESTAMP = 4; // int_val (1546235518)
+    }
+
+    AttributeType attr_type = 1;
+
+    oneof oneof_attr_val {
+        string str_val = 2;
+        int32 int_val = 3;
+        int64 long_val = 4;
+        float float_val = 5;
+        SetCateValue scate_val = 6;
+    }
+}

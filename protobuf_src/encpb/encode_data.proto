@@ -1,0 +1,17 @@
+/**
+ * Created by qfeng on 2019/02/25
+ */
+
+syntax = "proto3";
+
+option cc_enable_arenas = true;
+option java_outer_classname = "EncodeDataPb";
+option java_multiple_files = true;
+option java_package = "algocomp";
+
+package algocomp;
+
+message EncodeData {
+    int64 enc = 1;
+    float val = 2;
+}

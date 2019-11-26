@@ -1,0 +1,17 @@
+/**
+ * Created by qfeng on 2018/12/29
+ */
+
+syntax = "proto3";
+
+option cc_enable_arenas = true;
+option java_outer_classname = "ScoreBunchPb";
+option java_multiple_files = true;
+option java_package = "algocomp";
+
+
+package algocomp;
+
+message ScoreBunch {
+    map<string, float> scores = 1;
+}

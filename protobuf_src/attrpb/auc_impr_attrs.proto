@@ -1,0 +1,22 @@
+/**
+ * Created by qfeng on 2018/12/29
+ */
+
+syntax = "proto3";
+
+option cc_enable_arenas = true;
+option java_outer_classname = "AUCImprAttrsPb";
+option java_multiple_files = true;
+option java_package = "algocomp";
+
+import "attrpb/attribute_bunch.proto";
+
+package algocomp;
+
+message AUCImprAttrs {
+    repeated float labels = 1;
+    repeated float weights = 2;
+    repeated float scores = 3;
+    AttributeBunch user_and_ctx = 4;
+    repeated AttributeBunch ads = 5;
+}

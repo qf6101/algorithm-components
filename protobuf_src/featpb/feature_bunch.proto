@@ -1,0 +1,20 @@
+/**
+ * Created by qfeng on 2018/12/29
+ */
+
+syntax = "proto3";
+
+option cc_enable_arenas = true;
+option java_outer_classname = "FeatureBunchPb";
+option java_multiple_files = true;
+option java_package = "algocomp";
+
+import "featpb/cont_feat_grp.proto";
+import "featpb/disc_feat_grp.proto";
+
+package algocomp;
+
+message FeatureBunch {
+    map<string, DiscFeatGrp> disc_feats = 1;
+    map<string, ContFeatGrp> cont_feats = 2;
+}

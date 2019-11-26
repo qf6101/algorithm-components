@@ -1,0 +1,18 @@
+/**
+ * Created by qfeng on 2018/12/29
+ */
+
+syntax = "proto3";
+
+option cc_enable_arenas = true;
+option java_outer_classname = "DiscFeatGrpPb";
+option java_multiple_files = true;
+option java_package = "algocomp";
+
+import "featpb/disc_feat_data.proto";
+
+package algocomp;
+
+message DiscFeatGrp {
+    map<string, DiscFeatData> feats = 1;
+}
