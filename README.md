@@ -11,4 +11,8 @@ abseil master 7b46e1d (HEAD has bug as of 2019.01.07)
 swig v3.0.12
 java 1.8
 ```
-NB: set INSTALL_GTEST in googletest to OFF.
+
+N.B. set INSTALL_GTEST in googletest to OFF.
+
+[Here is the detailed document.](https://github.com/qf6101/algorithm-components/blob/master/docs/doc.pdf)
+
