@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<aucimpr-attributes>
+
+    <user-and-ctx>
+
+        <categorical-attrs>
+            <attribute in_aname="userSex" out_gname="user_sex" out_fname="%out_gname/user_sex%male:1.0"
+                       procs="prune_max_len" params="skip,10"/>
+        </categorical-attrs>
+
+        <realvalued-attrs>
+            <attribute in_aname="userAge" out_gname="user_age" out_fname="=out_gname/user_age:26"
+                       procs="prune_range;scale_min_max" params="skip,5,70;5,70"/>
+
+            <attribute in_aname="userCost" out_gname="user_cost" out_fname="=out_gname/user_cost:100"
+                       procs="prune_range;scale_z_score" params="replace,0,1e6;150,50"/>
+
+            <attribute in_aname="userCost2" out_gname="user_cost2" out_fname="=out_gname/user_cost2:100"
+                       procs="prune_range;scale_z_score;log" params="replace,-2000,1e6;1.5,1;log10,-500"/>
+        </realvalued-attrs>
+
+        <setcate-attrs>
+            <attribute in_aname="poi_cpt" out_gname="=in_aname/poi_cpt"
+                       out_fname="%out_gname/poi_cpt%ent:0.3;poi_cpt%sport:0.7" procs="norm_type;key_split;val_split"
+                       params="norm_sum;semicolon;colon"/>
+            <attribute in_aname="poi_cpt2" out_gname="=in_aname/poi_cpt2"
+                       out_fname="%out_gname" procs="norm_type;key_split"
+                       params="none;comma"/>
+            <attribute in_aname="poi_cpt3" out_gname="=in_aname/poi_cpt3"
+                       out_fname="%out_gname" procs="norm_type;key_split"
+                       params="use_one;comma"/>
+        </setcate-attrs>
+
+        <time-attrs>
+            <attribute in_aname="happen_time" out_gname="=in_aname/happen_time"
+                       out_fname="%out_gname/happend_time%weekend:1.0,happend_time%raw:1534204864,..." procs="all"
+                       params=""/>
+        </time-attrs>
+
+    </user-and-ctx>
+
+    <ads>
+        <categorical-attrs>
+            <attribute in_aname="productId" out_gname="product_id" out_fname="%out_gname/product_id%abc:1.0"
+                       procs="prune_max_len" params="cut_tail,150"/>
+        </categorical-attrs>
+
+        <time-attrs>
+            <attribute in_aname="happen_time2" out_gname="=in_aname/happen_time2"
+                       out_fname="%out_gname/happend_time%weekend:1.0,happend_time%raw:1534204864,..." procs="partial;time_str"
+                       params="week,month,day;%Y-%m-%d"/>
+            <attribute in_aname="happen_time3" out_gname="=in_aname/happen_time3"
+                       out_fname="%out_gname/happend_time%weekend:1.0,happend_time%raw:1534204864,..." procs="all;time_str"
+                       params="-;%Y-%m-%d %H:%M:%S"/>
+        </time-attrs>
+    </ads>
+
+</aucimpr-attributes>
+

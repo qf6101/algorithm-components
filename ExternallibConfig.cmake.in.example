@@ -1,0 +1,20 @@
+# abseil
+include_directories(/home/bizer/platform/abseil-cpp/bazel-abseil-cpp)
+link_directories(/home/bizer/platform/abseil-cpp/bazel-out/k8-fastbuild/bin/_solib_k8)
+link_directories(/home/bizer/platform/abseil-cpp/bazel-out/k8-fastbuild/bin/absl)
+link_directories(/home/bizer/platform/abseil-cpp/abseil-cpp/bazel-out/k8-fastbuild/bin/external)
+
+# gperftools
+# include_directories(/home/bizer/platform/gperftools-2.7/build/include)
+# link_directories(/home/bizer/platform/gperftools-2.7/build/lib)
+
+# protobuf
+include_directories(/home/bizer/platform/protobuf-3.6.1/build/include)
+link_directories(/home/bizer/platform/protobuf-3.6.1/build/lib)
+
+# boost
+include_directories(/usr/include)
+link_directories(/usr/lib/x86_64-linux-gnu)
+
+# eigen
+include_directories(/home/bizer/platform/eigen-eigen-323c052e1731)

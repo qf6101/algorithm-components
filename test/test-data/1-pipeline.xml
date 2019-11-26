@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<pipeline-components>
+    <global-params>
+        <thread-type>on-ads</thread-type>
+    </global-params>
+
+    <resource>
+        <conf-fname>1-resource.xml</conf-fname>
+    </resource>
+
+    <pipeline-heads>
+        <pl-head>
+            <name>pl-head-1</name>
+            <attr-transer>attr-trans-1</attr-transer>
+            <feat-transer>feat-trans-1</feat-transer>
+        </pl-head>
+    </pipeline-heads>
+
+    <pipeline-middles>
+        <pl-middle>
+            <name>pl-middle-1</name>
+            <feat-enc>
+                <feat-enc-name>feat-hash-1</feat-enc-name>
+                <feat-enc-scope>all</feat-enc-scope>
+                <feat-enc-mode>processing</feat-enc-mode>
+                <feat-enc-str-format>libsvm</feat-enc-str-format>
+            </feat-enc>
+        </pl-middle>
+    </pipeline-middles>
+
+    <pipeline-tails>
+        <pl-tail>
+            <name>pl-tail-1</name>
+            <model>model-1</model>
+        </pl-tail>
+    </pipeline-tails>
+
+    <pipeline-calibrations>
+        <pl-calibration>
+            <name>ad1</name>
+            <calibration>calibration-1</calibration>
+        </pl-calibration>
+
+        <pl-calibration>
+            <name>ad2</name>
+            <calibration>calibration-2</calibration>
+        </pl-calibration>
+
+        <pl-calibration>
+            <name>default</name>
+            <calibration>calibration-0</calibration>
+        </pl-calibration>
+        <pl-calibration>
+            <name>ad3</name>
+            <calibration>calibration-3</calibration>
+        </pl-calibration>
+        <pl-calibration>
+            <name>ad4</name>
+            <calibration>calibration-4</calibration>
+        </pl-calibration>
+    </pipeline-calibrations>
+
+    <pipelines>
+        <pl>
+            <name>pl-1</name>
+            <pl-head>pl-head-1</pl-head>
+            <pl-middle>pl-middle-1</pl-middle>
+        </pl>
+
+        <pl>
+            <name>pl-2</name>
+            <pl-middle>pl-middle-1</pl-middle>
+            <pl-tail>pl-tail-1</pl-tail>
+        </pl>
+    </pipelines>
+
+</pipeline-components>

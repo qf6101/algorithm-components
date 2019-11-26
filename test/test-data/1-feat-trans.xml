@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<aucimpr-feat-trans>
+
+    <user-and-ctx>
+        <unary-trans>
+            <cont2cont>
+                <op-ctx in_gname="user_cost" in_fname="=in_gname/user_cost" out_gname="#in_fname/user_cost#log"
+                        out_fname="=out_gname/user_cost#log" op="log" scope="fname" procs="log10"/>
+            </cont2cont>
+
+            <cont2disc>
+                <op-ctx in_gname="poi_cpt" in_fname="%in_gname/poi_cpt%ent" out_gname="#in_fname/poi_cpt%ent#bkt"
+                        out_fname="@out_gname/poi_cpt%ent#bkt@1" op="bucketize" scope="gname" procs="predefined"
+                        params="ten-equal-width"/>
+                <op-ctx in_gname="user_age" in_fname="=in_gname/user_age" out_gname="#in_fname/user_age#bkt"
+                        out_fname="@out_gname/user_age#bkt@1" op="bucketize" scope="fname" procs="customized"
+                        params="0,18,25,30,40,45,50"/>
+            </cont2disc>
+
+            <!--<op-ctx in_gname="user_sex" in_fname="%in_gname/user_sex%male"-->
+            <!--out_gname="#in_fname/user_sex%male#lookup_h1d"-->
+            <!--out_fname="=out_gname/user_sex%male#lookup_h1d" op="lookup_h1d" scope="gname"/>-->
+        </unary-trans>
+
+        <binary-trans>
+            <disc2disc>
+                <op-ctx in_gname1="user_sex" in_fname1="%in_game1/user_sex%male" in_gname2="user_age#bkt"
+                        in_fname2="%in_game2/user_age#bkt@1"
+                        out_gname="!cross^in_gname1^in_gname2/!cross^user_sex^user_age#bkt"
+                        out_fname="!cross^in_fname1^in_fname2/!cross^user_sex%male^user_age#bkt@1" op="cross"
+                        scope="gname"/>
+
+                <op-ctx in_gname1="all" in_fname1="%in_game1" in_gname2="all"
+                        in_fname2="%in_game2"
+                        out_gname="!cross^in_gname1^in_gname2"
+                        out_fname="!cross^in_fname1^in_fname2" op="crossall" scope="gname" procs="uc-inner"/>
+            </disc2disc>
+        </binary-trans>
+    </user-and-ctx>
+
+    <ad>
+        <unary-trans>
+            <cont2cont>
+                <op-ctx in_gname="ad_cost" in_fname="=in_gname/ad_cost" out_gname="#in_fname/ad_cost#log"
+                        out_fname="=out_gname/ad_cost#log" op="log" scope="fname" procs="log"/>
+            </cont2cont>
+
+            <cont2disc>
+                <op-ctx in_gname="ad_revenue" in_fname="=in_gname/ad_revenue" out_gname="#in_fname/ad_revenue#bkt"
+                        out_fname="@out_gname/ad_revenue#bkt@1" op="bucketize" scope="fname" procs="predefined"
+                        params="ten-equal-width-zscore"/>
+            </cont2disc>
+
+        </unary-trans>
+
+        <binary-trans>
+
+            <cont2cont>
+                <op-ctx in_gname1="user_cost#log" in_fname1="=in_game1/user_cost#log" in_gname2="ad_cost#log"
+                        in_fname2="=in_game2/ad_cost#log"
+                        out_gname="!cross^in_gname1^in_gname2/!comp^user_cost#log^ad_cost#log"
+                        out_fname="!cross^out_gname/!comp$avg_dot^user_cost#log^ad_cost#log" op="comp"
+                        scope="fname"
+                        procs="partial" params="avg_min, avg_max, avg_dot"/>
+            </cont2cont>
+
+            <disc2disc>
+                <op-ctx in_gname1="all" in_fname1="%in_game1" in_gname2="all"
+                        in_fname2="%in_game2"
+                        out_gname="!cross^in_gname1^in_gname2"
+                        out_fname="!cross^in_fname1^in_fname2" op="crossall" scope="gname" procs="ad-inner"/>
+
+                <op-ctx in_gname1="all" in_fname1="%in_game1" in_gname2="all"
+                        in_fname2="%in_game2"
+                        out_gname="!cross^in_gname1^in_gname2"
+                        out_fname="!cross^in_fname1^in_fname2" op="crossall" scope="gname"
+                        procs="ad2uc;ignore_uc_gnames;ignore_double_cross" params="-;feat1_grp;true"/>
+            </disc2disc>
+
+        </binary-trans>
+
+    </ad>
+
+</aucimpr-feat-trans>
+

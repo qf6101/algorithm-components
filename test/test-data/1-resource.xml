@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <thread-pool>
+        <num_threads>5</num_threads>
+        <thread_queue_size>5000</thread_queue_size>
+    </thread-pool>
+
+    <feature-operators>
+        <feat-op>
+            <op>all_base</op>
+        </feat-op>
+    </feature-operators>
+
+    <attribute-transformers>
+        <attr-transer>
+            <name>attr-trans-1</name>
+            <conf_fname>1-attr-trans.xml</conf_fname>
+        </attr-transer>
+    </attribute-transformers>
+
+    <feature-transformers>
+        <feat-transer>
+            <name>feat-trans-1</name>
+            <conf_fname>1-feat-trans.xml</conf_fname>
+        </feat-transer>
+    </feature-transformers>
+
+    <feature-encoders>
+        <feat-hash>
+            <name>feat-hash-1</name>
+            <hash-bits>30</hash-bits>
+        </feat-hash>
+
+        <!--<feat-map>-->
+            <!--<name>feat-map-1</name>-->
+            <!--<conf_fname>feat-map-1.txt</conf_fname>-->
+        <!--</feat-map>-->
+    </feature-encoders>
+
+    <models>
+        <model>
+            <name>model-1</name>
+            <type>skl-model</type>
+            <fname>1-models/1-skl-model.txt</fname>
+            <update-interval>60</update-interval>
+        </model>
+    </models>
+
+    <calibrations>
+        <calibration>
+            <name>calibration-0</name>
+            <type>hybrid</type>
+            <fname>1-calibrations/1-prior-correction.txt;1-calibrations/1-isotonic-regression.txt</fname>
+            <update-interval>60</update-interval>
+        </calibration>
+
+        <calibration>
+            <name>calibration-1</name>
+            <type>hybrid</type>
+            <fname>1-calibrations/1-prior-correction.txt;1-calibrations/1-isotonic-regression.txt</fname>
+            <update-interval>60</update-interval>
+        </calibration>
+
+        <calibration>
+            <name>calibration-2</name>
+            <type>hybrid</type>
+            <fname>1-calibrations/1-prior-correction.txt;1-calibrations/1-isotonic-regression.txt</fname>
+            <update-interval>60</update-interval>
+        </calibration>
+
+        <calibration>
+            <name>calibration-3</name>
+            <type>prior-correction</type>
+            <fname>1-calibrations/1-prior-correction.txt</fname>
+            <update-interval>60</update-interval>
+        </calibration>
+
+        <calibration>
+            <name>calibration-4</name>
+            <type>isotonic-regression</type>
+            <fname>1-calibrations/1-isotonic-regression.txt</fname>
+            <update-interval>60</update-interval>
+        </calibration>
+    </calibrations>
+
+</resources>
