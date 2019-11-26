@@ -16,3 +16,5 @@ N.B. set INSTALL_GTEST in googletest to OFF.
 
 [Here is the detailed document.](https://github.com/qf6101/algorithm-components/blob/master/docs/doc.pdf)
 
+[Here is the tutorial (in Chinese).](https://github.com/qf6101/technical-skill-summary/blob/master/%E9%AB%98%E6%80%A7%E8%83%BD%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8BPipeline%E8%AE%BE%E8%AE%A1%E8%A6%81%E7%82%B9.pdf)
+
